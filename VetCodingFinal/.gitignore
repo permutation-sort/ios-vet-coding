@@ -1,1 +1,13 @@
-GoogleService-Info
+# Ignore build artifacts
+build/
+DerivedData/
+
+# Ignore macOS specific files
+.DS_Store
+
+# Include specific file
+GoogleService-Info.plist
+
+
+# Ignore log files with a specific extension
+*.log
