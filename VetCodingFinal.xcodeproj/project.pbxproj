@@ -51,6 +51,7 @@
 		D4D174EC2A36935300AE3821 = {
 			isa = PBXGroup;
 			children = (
+				D4D175172A36946F00AE3821 /* .gitignore */,
 				D4D174F72A36935300AE3821 /* VetCodingFinal */,
 				D4D174F62A36935300AE3821 /* Products */,
 			);
@@ -75,7 +76,6 @@
 				D4D1750F2A3693AA00AE3821 /* IllnessModel.swift */,
 				D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */,
 				D4D175132A3693D700AE3821 /* illnessDetail.swift */,
-				D4D175172A36946F00AE3821 /* .gitignore */,
 			);
 			path = VetCodingFinal;
 			sourceTree = "<group>";
