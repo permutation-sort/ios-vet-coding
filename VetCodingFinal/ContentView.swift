@@ -1,21 +1,50 @@
-//
 //  ContentView.swift
-//  VetCodingFinal
+//  VetBillingApp
 //
-//  Created by Matt Koenig on 6/11/23.
+//  Created by Matt Koenig on 6/10/23.
 //
 
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var VetCoding = IllnessViewModel()
+    @State var illness = IllnessModel(title: "", code: "", description: "")
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            List {
+                ForEach($VetCoding.illnesses) { $illness in
+                    NavigationLink(destination: illnessDetail(illness: $illness)) {
+                        Text(illness.title)
+                            .font(.headline)
+                            .padding(.vertical)
+                    }
+                    .background(Color.white)
+                    .cornerRadius(8)
+                }
+                Section {
+                    NavigationLink(destination: illnessDetail(illness: $illness)) {
+                        Text("New illness")
+                            .foregroundColor(Color.gray)
+                            .font(.system(size: 15))
+                            .padding(.vertical)
+                    }
+                    .background(Color.white)
+                    .cornerRadius(8)
+                }
+            }
+            .background(Color.white)
+            .scrollContentBackground(.hidden)
+            .onAppear {
+                VetCoding.fetchData()
+            }
+            .refreshable {
+                VetCoding.fetchData()
+            }
+            .padding(.horizontal)
+            .navigationBarTitle("Vet Billing App", displayMode: .large)
         }
-        .padding()
     }
 }
 
