@@ -5,14 +5,24 @@
 //
 
 import SwiftUI
-
 struct illnessDetail: View {
     
     @Binding var illness : IllnessModel
     @StateObject var VetCodingApp = IllnessViewModel()
+    @State private var selectedDay = "Monday"
+    
+    private let daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
     
     var body: some View {
         VStack(alignment: .leading) {
+            Picker("Select Day", selection: $selectedDay) {
+                ForEach(daysOfWeek, id: \.self) {
+                    Text($0)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
             TextField("Illness title", text: $illness.title)
                 .font(.headline)
                 .padding(.vertical)
@@ -39,7 +49,7 @@ struct illnessDetail: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    VetCodingApp.saveData(illness: illness)
+                    VetCodingApp.saveData(illness: illness, day: selectedDay)
                     illness.title = ""
                     illness.code = ""
                     illness.description = ""

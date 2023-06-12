@@ -32,9 +32,9 @@ class IllnessViewModel : ObservableObject {
             }
     }
     
-    func saveData(illness: IllnessModel) {
+    func saveData(illness: IllnessModel, day: String) {
         if let id = illness.id {
-            // Edit note
+            // Edit illness
             if !illness.title.isEmpty || !illness.code.isEmpty || illness.description.isEmpty {
                 
                 let docRef = db.collection("illness").document(id)
@@ -42,32 +42,51 @@ class IllnessViewModel : ObservableObject {
                     "title": illness.title,
                     "code": illness.code,
                     "description": illness.description
-                ]) { err in
+                ]) { [weak self] err in
                     if let err = err {
-                        print("error")
+                        print("Error updating document: \(err)")
                     } else {
-                        print("updated!")
+                        print("Illness updated!")
+                        self?.addIllnessToDay(day: day, illnessId: id)
                     }
                 }
             }
         } else {
-            // Add note
+            // Add illness
             if !illness.title.isEmpty || !illness.code.isEmpty || illness.description.isEmpty {
                 var ref: DocumentReference? = nil
                 ref = db.collection("illness").addDocument(data: [
                     "title": illness.title,
                     "code": illness.code,
                     "description": illness.description
-                    ]) { err in
-                        if let err = err {
-                            print("error")
-                        } else {
-                            print("updated!")
-                        }
+                ]) { [weak self] err in
+                    if let err = err {
+                        print("Error adding document: \(err)")
+                    } else {
+                        print("Illness added with ID: \(ref!.documentID)")
+                        self?.addIllnessToDay(day: day, illnessId: ref!.documentID)
                     }
+                }
             }
-
-
         }
     }
+
+    func addIllnessToDay(day: String, illnessId: String) {
+        let docRefDay = db.collection("days").document(day)
+        
+        // Use FieldValue.arrayUnion() to add the illnessId to the array of references
+        docRefDay.updateData([
+            "illnesses": FieldValue.arrayUnion([illnessId])
+        ]) { err in
+            if let err = err {
+                print("Error updating day document: \(err)")
+            } else {
+                print("Day updated with illness!")
+            }
+        }
+    }
+
+
+    
+    
 }
