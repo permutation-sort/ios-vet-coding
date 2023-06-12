@@ -119,5 +119,8 @@ iOSInjectionProject/
 
 # Ignore GoogleService-Info.plist
 VetCodingFinal/GoogleService-Info.plist
+Config/GoogleService-Info.plist
+GoogleService-Info.plist
+
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,swift
