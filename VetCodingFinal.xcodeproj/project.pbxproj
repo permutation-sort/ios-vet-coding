@@ -18,7 +18,6 @@
 		D4D175122A3693BF00AE3821 /* IllnessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */; };
 		D4D175142A3693D700AE3821 /* illnessDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D175132A3693D700AE3821 /* illnessDetail.swift */; };
 		D4D175162A36942400AE3821 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4D175152A36942400AE3821 /* GoogleService-Info.plist */; };
-		D4D175182A36946F00AE3821 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D4D175172A36946F00AE3821 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,7 +30,6 @@
 		D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllnessViewModel.swift; sourceTree = "<group>"; };
 		D4D175132A3693D700AE3821 /* illnessDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = illnessDetail.swift; sourceTree = "<group>"; };
 		D4D175152A36942400AE3821 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D4D175172A36946F00AE3821 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +49,6 @@
 		D4D174EC2A36935300AE3821 = {
 			isa = PBXGroup;
 			children = (
-				D4D175172A36946F00AE3821 /* .gitignore */,
 				D4D174F72A36935300AE3821 /* VetCodingFinal */,
 				D4D174F62A36935300AE3821 /* Products */,
 			);
@@ -154,7 +151,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4D175182A36946F00AE3821 /* .gitignore in Resources */,
 				D4D175002A36935500AE3821 /* Preview Assets.xcassets in Resources */,
 				D4D174FD2A36935500AE3821 /* Assets.xcassets in Resources */,
 				D4D175162A36942400AE3821 /* GoogleService-Info.plist in Resources */,
