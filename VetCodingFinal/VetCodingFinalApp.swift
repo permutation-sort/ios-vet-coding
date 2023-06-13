@@ -22,10 +22,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct VetCodingFinalApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+    @StateObject var viewModel = AuthViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if viewModel.signedIn {
+                ContentView()
+                    .environmentObject(viewModel)
+            } else {
+                Authentication()
+                    .environmentObject(viewModel)
+            }
         }
     }
 }

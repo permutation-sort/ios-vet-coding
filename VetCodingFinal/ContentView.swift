@@ -14,6 +14,8 @@ struct ContentView: View {
     
     @StateObject var VetCoding = IllnessViewModel()
     @State var illness = IllnessModel(title: "", code: "", description: "")
+    @EnvironmentObject var authViewModel: AuthViewModel
+
     
     // Add state for the selected day of the week
     @State private var selectedDay = "Monday"
@@ -29,6 +31,9 @@ struct ContentView: View {
                     ForEach(daysOfWeek, id: \.self) {
                         Text($0)
                     }
+                }
+                .onChange(of: selectedDay) { day in
+                    VetCoding.fetchData(selection: day)
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
@@ -57,14 +62,18 @@ struct ContentView: View {
                 .background(Color.white)
                 .scrollContentBackground(.hidden)
                 .onAppear {
-                    VetCoding.fetchData()
+                    VetCoding.fetchData(selection: selectedDay)
                 }
                 .refreshable {
-                    VetCoding.fetchData()
+                    VetCoding.fetchData(selection: selectedDay)
                 }
                 .padding(.horizontal)
             }
             .navigationBarTitle("Vet Billing App", displayMode: .large)
+            .navigationBarItems(trailing: Button("Sign Out", action: {
+                authViewModel.signOut()
+            }))
+
         }
     }
 }

@@ -18,6 +18,9 @@
 		D4D175122A3693BF00AE3821 /* IllnessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */; };
 		D4D175142A3693D700AE3821 /* illnessDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D175132A3693D700AE3821 /* illnessDetail.swift */; };
 		D4D175162A36942400AE3821 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4D175152A36942400AE3821 /* GoogleService-Info.plist */; };
+		D4D1751B2A37F7EB00AE3821 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D4D1751A2A37F7EB00AE3821 /* FirebaseAuth */; };
+		D4D1751D2A37FAE800AE3821 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1751C2A37FAE800AE3821 /* AuthView.swift */; };
+		D4D1751F2A37FAF300AE3821 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1751E2A37FAF300AE3821 /* AuthViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,8 @@
 		D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IllnessViewModel.swift; sourceTree = "<group>"; };
 		D4D175132A3693D700AE3821 /* illnessDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = illnessDetail.swift; sourceTree = "<group>"; };
 		D4D175152A36942400AE3821 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D4D1751C2A37FAE800AE3821 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		D4D1751E2A37FAF300AE3821 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +45,7 @@
 				D4D1750A2A36939200AE3821 /* FirebaseAnalytics in Frameworks */,
 				D4D1750C2A36939200AE3821 /* FirebaseFirestore in Frameworks */,
 				D4D1750E2A36939200AE3821 /* FirebaseFirestoreSwift in Frameworks */,
+				D4D1751B2A37F7EB00AE3821 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +57,7 @@
 			children = (
 				D4D174F72A36935300AE3821 /* VetCodingFinal */,
 				D4D174F62A36935300AE3821 /* Products */,
+				D4D175192A37F7EB00AE3821 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +80,8 @@
 				D4D1750F2A3693AA00AE3821 /* IllnessModel.swift */,
 				D4D175112A3693BF00AE3821 /* IllnessViewModel.swift */,
 				D4D175132A3693D700AE3821 /* illnessDetail.swift */,
+				D4D1751C2A37FAE800AE3821 /* AuthView.swift */,
+				D4D1751E2A37FAF300AE3821 /* AuthViewModel.swift */,
 			);
 			path = VetCodingFinal;
 			sourceTree = "<group>";
@@ -83,6 +92,13 @@
 				D4D174FF2A36935500AE3821 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D4D175192A37F7EB00AE3821 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +121,7 @@
 				D4D175092A36939200AE3821 /* FirebaseAnalytics */,
 				D4D1750B2A36939200AE3821 /* FirebaseFirestore */,
 				D4D1750D2A36939200AE3821 /* FirebaseFirestoreSwift */,
+				D4D1751A2A37F7EB00AE3821 /* FirebaseAuth */,
 			);
 			productName = VetCodingFinal;
 			productReference = D4D174F52A36935300AE3821 /* VetCodingFinal.app */;
@@ -166,6 +183,8 @@
 			files = (
 				D4D174FB2A36935300AE3821 /* ContentView.swift in Sources */,
 				D4D175142A3693D700AE3821 /* illnessDetail.swift in Sources */,
+				D4D1751F2A37FAF300AE3821 /* AuthViewModel.swift in Sources */,
+				D4D1751D2A37FAE800AE3821 /* AuthView.swift in Sources */,
 				D4D175102A3693AA00AE3821 /* IllnessModel.swift in Sources */,
 				D4D174F92A36935300AE3821 /* VetCodingFinalApp.swift in Sources */,
 				D4D175122A3693BF00AE3821 /* IllnessViewModel.swift in Sources */,
@@ -396,6 +415,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4D175082A36939200AE3821 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
+		};
+		D4D1751A2A37F7EB00AE3821 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4D175082A36939200AE3821 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
