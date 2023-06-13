@@ -3,11 +3,6 @@
 //
 //  Created by Matt Koenig on 6/10/23.
 //
-
-// todo!
-// make it so that each day of week has a list of items from that day
-// update the code to be a dropdown of exsiting options 
-
 import SwiftUI
 
 struct ContentView: View {
@@ -16,7 +11,6 @@ struct ContentView: View {
     @State var illness = IllnessModel(title: "", code: "", description: "")
     @EnvironmentObject var authViewModel: AuthViewModel
 
-    
     // Add state for the selected day of the week
     @State private var selectedDay = "Monday"
     
@@ -25,55 +19,69 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                // Add a Picker for the days of the week
-                Picker("Select Day", selection: $selectedDay) {
-                    ForEach(daysOfWeek, id: \.self) {
-                        Text($0)
-                    }
-                }
-                .onChange(of: selectedDay) { day in
-                    VetCoding.fetchData(selection: day)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
                 
-                List {
-                    ForEach($VetCoding.illnesses) { $illness in
-                        NavigationLink(destination: illnessDetail(illness: $illness)) {
-                            Text(illness.title)
-                                .font(.headline)
-                                .padding(.vertical)
+                VStack {
+                    // Add a Picker for the days of the week
+                    Picker("Select Day", selection: $selectedDay) {
+                        ForEach(daysOfWeek, id: \.self) {
+                            Text($0)
                         }
-                        .background(Color.white)
-                        .cornerRadius(8)
                     }
-                }
-                Section {
+                    .onChange(of: selectedDay) { day in
+                        VetCoding.fetchData(selection: day)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .background(Color.white.opacity(0.5))
+                    .cornerRadius(15)
+                    .padding()
+
+                    ScrollView {
+                        ForEach($VetCoding.illnesses) { $illness in
+                            NavigationLink(destination: illnessDetail(illness: $illness)) {
+                                Text(illness.title)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding()
+                                    .background(Color.white.opacity(0.5))
+                                    .cornerRadius(15)
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }
+
                     NavigationLink(destination: illnessDetail(illness: $illness)) {
                         Text("New illness")
-                            .foregroundColor(Color.gray)
-                            .font(.system(size: 15))
-                            .padding(.vertical)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding()
+                            .background(Color.green)
+                            .cornerRadius(15)
+                            .padding(.horizontal)
                     }
-                    .background(Color.white)
-                    .cornerRadius(8)
                 }
-                .background(Color.white)
-                .scrollContentBackground(.hidden)
-                .onAppear {
-                    VetCoding.fetchData(selection: selectedDay)
-                }
-                .refreshable {
-                    VetCoding.fetchData(selection: selectedDay)
-                }
-                .padding(.horizontal)
+                .padding(.top)
             }
-            .navigationBarTitle("Vet Billing App", displayMode: .large)
-            .navigationBarItems(trailing: Button("Sign Out", action: {
-                authViewModel.signOut()
-            }))
-
+            .navigationBarTitle("Vet Billing App", displayMode: .inline)
+            .navigationBarItems(
+                leading: Button("Refresh", action: {
+                    VetCoding.fetchData(selection: selectedDay)
+                })
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.orange)
+                .cornerRadius(15),
+                trailing: Button("Sign Out", action: {
+                    authViewModel.signOut()
+                })
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.red)
+                .cornerRadius(15))
         }
     }
 }
